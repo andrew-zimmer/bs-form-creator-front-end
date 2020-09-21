@@ -2,6 +2,7 @@ import React from "react";
 import uuid from "uuid";
 
 import FormDisplay from "./Form";
+import HiddenForm from "./HiddenForm";
 
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -11,7 +12,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext } from "react-beautiful-dnd";
 
 class CreateFormForm extends React.Component {
   state = {
@@ -539,12 +540,16 @@ class CreateFormForm extends React.Component {
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
+              <Button variant="primary" type="submit">
+                Get HTML
+              </Button>
             </Col>
 
             <Col md={8} lg={8}>
               <FormDisplay form={this.state.form} />
             </Col>
           </Row>
+          <HiddenForm form={this.state.form} />
         </Container>
       </DragDropContext>
     );
