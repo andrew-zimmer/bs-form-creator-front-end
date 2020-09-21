@@ -3,6 +3,7 @@ import uuid from "uuid";
 
 import FormDisplay from "./Form";
 import HiddenForm from "./HiddenForm";
+import DisplayHTML from "./htmlDisplayModal/DisplayHTML";
 
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -138,7 +139,6 @@ class CreateFormForm extends React.Component {
 
   handleClickInput = (e) => {
     e.preventDefault();
-    console.log(this.state.inputField);
     this.setState({
       form: [
         ...this.state.form,
@@ -192,7 +192,6 @@ class CreateFormForm extends React.Component {
 
   handleClickAdd = (e) => {
     e.preventDefault();
-    console.log(this.state.selectField.option);
     this.setState({
       selectField: {
         ...this.state.selectField,
@@ -239,7 +238,7 @@ class CreateFormForm extends React.Component {
 
   renderOptions = () => {
     return this.state.selectField.options.map((option) => (
-      <Row className="mt-4">
+      <Row className="mt-4" key={option}>
         <ul className="list-inline mx-auto">
           <li className="list-inline-item">{option}</li>
           <li className="list-inline-item">
@@ -259,7 +258,7 @@ class CreateFormForm extends React.Component {
 
   renderButtonOptions = () => {
     return this.state.buttonField.options.map((option) => (
-      <Row className="mt-4">
+      <Row className="mt-4" key={option}>
         <ul className="list-inline mx-auto">
           <li className="list-inline-item">{option}</li>
           <li className="list-inline-item">
@@ -291,7 +290,6 @@ class CreateFormForm extends React.Component {
     }
 
     if (destination.droppableId === "delete") {
-      console.log(source.index);
       const form = [...this.state.form];
 
       form.splice(source.index, 1);
@@ -325,7 +323,7 @@ class CreateFormForm extends React.Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
-                      <Form>
+                      <Form onSubmit={this.handleClickInput}>
                         <Form.Group controlId="formBasicEmail">
                           <Form.Label>Label</Form.Label>
                           <Form.Control
@@ -333,6 +331,7 @@ class CreateFormForm extends React.Component {
                             placeholder="Label your input"
                             onChange={this.handleChangeInputList}
                             value={this.state.inputField.label}
+                            required
                           />
                           <Form.Text className="text-muted">
                             You'll be able to edit in field.
@@ -370,11 +369,7 @@ class CreateFormForm extends React.Component {
                         >
                           <Form.Check type="checkbox" label="Required?" />
                         </Form.Group>
-                        <Button
-                          variant="primary"
-                          type="submit"
-                          onClick={this.handleClickInput}
-                        >
+                        <Button variant="primary" type="submit">
                           Create Input
                         </Button>
                       </Form>
@@ -387,7 +382,7 @@ class CreateFormForm extends React.Component {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="1">
                     <Card.Body>
-                      <Form>
+                      <Form onSubmit={this.handleClickSelectAdd}>
                         <fieldset>
                           <Form.Group as={Row}>
                             <Col sm={10}>
@@ -406,6 +401,7 @@ class CreateFormForm extends React.Component {
                                 onChange={this.handleChangeRadio}
                               />
                             </Col>
+                            required
                           </Form.Group>
                         </fieldset>
 
@@ -416,6 +412,7 @@ class CreateFormForm extends React.Component {
                             type="text"
                             placeholder="Label"
                             value={this.state.selectField.label}
+                            required
                           />
                         </Form.Group>
 
@@ -437,11 +434,7 @@ class CreateFormForm extends React.Component {
                           Add Option
                         </Button>
 
-                        <Button
-                          variant="primary"
-                          type="submit"
-                          onClick={this.handleClickSelectAdd}
-                        >
+                        <Button variant="primary" type="submit">
                           Create Input
                         </Button>
                         {this.renderOptions()}
@@ -540,9 +533,7 @@ class CreateFormForm extends React.Component {
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
-              <Button variant="primary" type="submit">
-                Get HTML
-              </Button>
+              <DisplayHTML />
             </Col>
 
             <Col md={8} lg={8}>

@@ -22,7 +22,7 @@ class FormDisplay extends React.Component {
                   {...provided.dragHandleProps}
                 >
                   <Form.Group controlId={x.input.id}>
-                    <Form.Label>{x.input.label}</Form.Label>
+                    <Form.Label as="legend">{x.input.label}</Form.Label>
 
                     <Form.Control
                       type={x.input.type}
@@ -44,7 +44,7 @@ class FormDisplay extends React.Component {
                   {...provided.dragHandleProps}
                 >
                   <Form.Group controlId={x.input.id}>
-                    <Form.Label>{x.input.label}</Form.Label>
+                    <Form.Label as="legend">{x.input.label}</Form.Label>
                     <Form.Control
                       type={x.input.type}
                       placeholder={x.input.placeholder}
@@ -66,10 +66,10 @@ class FormDisplay extends React.Component {
                   {...provided.dragHandleProps}
                 >
                   <Form.Group controlId={x.select.id}>
-                    <Form.Label>{x.select.label}</Form.Label>
+                    <Form.Label as="legend">{x.select.label}</Form.Label>
                     <Form.Control as="select">
                       {x.select.options.map((option) => (
-                        <option className={option}>{option}</option>
+                        <option name={option}>{option}</option>
                       ))}
                     </Form.Control>
                   </Form.Group>
@@ -87,7 +87,7 @@ class FormDisplay extends React.Component {
                   {...provided.dragHandleProps}
                 >
                   <Form.Group controlId={x.select.id}>
-                    <Form.Label>{x.select.label}</Form.Label>
+                    <Form.Label as="legend">{x.select.label}</Form.Label>
                     <Form.Control as="select" multiple>
                       {x.select.options.map((option) => (
                         <option className={option}>{option}</option>
@@ -163,12 +163,12 @@ class FormDisplay extends React.Component {
   };
   render() {
     return (
-      <Container>
+      <Container className="border border-solid rounded">
         <Row>
-          <Col md={8} lg={8}>
+          <Col md={6} lg={6}>
             <h2>Form Display</h2>
           </Col>
-          <Col md={4} lg={4}>
+          <Col md={6} lg={6}>
             <Droppable droppableId="delete">
               {(provided) => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -186,7 +186,11 @@ class FormDisplay extends React.Component {
         </Row>
         <Droppable droppableId="dp1">
           {(provided) => (
-            <Container ref={provided.innerRef} {...provided.droppableProps}>
+            <Container
+              className="border border-solid rounded mt-3 mb-4"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
               <Form>{this.renderForm()}</Form>
               {provided.placeholder}
             </Container>
