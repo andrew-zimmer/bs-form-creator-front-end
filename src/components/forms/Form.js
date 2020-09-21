@@ -1,8 +1,12 @@
 import React from "react";
+
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable, Droppable } from "react-beautiful-dnd";
+const Handle = <i className="las la-arrows-alt"></i>;
 
 class FormDisplay extends React.Component {
   renderForm = () => {
@@ -19,6 +23,7 @@ class FormDisplay extends React.Component {
                 >
                   <Form.Group controlId={x.input.id}>
                     <Form.Label>{x.input.label}</Form.Label>
+
                     <Form.Control
                       type={x.input.type}
                       placeholder={x.input.placeholder}
@@ -159,10 +164,34 @@ class FormDisplay extends React.Component {
   render() {
     return (
       <Container>
-        <h2>Form Display</h2>
-        <Container>
-          <Form>{this.renderForm()}</Form>
-        </Container>
+        <Row>
+          <Col md={8} lg={8}>
+            <h2>Form Display</h2>
+          </Col>
+          <Col md={4} lg={4}>
+            <Droppable droppableId="delete">
+              {(provided) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <h3
+                    className="text-center border-danger text-danger rounded p-2"
+                    style={{ borderWidth: "5px", borderStyle: "dashed" }}
+                  >
+                    Drag Here To Delete
+                  </h3>
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </Col>
+        </Row>
+        <Droppable droppableId="dp1">
+          {(provided) => (
+            <Container ref={provided.innerRef} {...provided.droppableProps}>
+              <Form>{this.renderForm()}</Form>
+              {provided.placeholder}
+            </Container>
+          )}
+        </Droppable>
       </Container>
     );
   }

@@ -289,15 +289,26 @@ class CreateFormForm extends React.Component {
       return;
     }
 
-    const form = [...this.state.form];
-    const droppedInput = this.state.form[source.index];
+    if (destination.droppableId === "delete") {
+      console.log(source.index);
+      const form = [...this.state.form];
 
-    form.splice(source.index, 1);
-    form.splice(destination.index, 0, droppedInput);
+      form.splice(source.index, 1);
 
-    this.setState({
-      form,
-    });
+      this.setState({
+        form,
+      });
+    } else {
+      const form = [...this.state.form];
+      const droppedInput = this.state.form[source.index];
+
+      form.splice(source.index, 1);
+      form.splice(destination.index, 0, droppedInput);
+
+      this.setState({
+        form,
+      });
+    }
   };
 
   render() {
@@ -529,19 +540,10 @@ class CreateFormForm extends React.Component {
                 </Card>
               </Accordion>
             </Col>
-            <Droppable droppableId="dp1">
-              {(provided) => (
-                <Col
-                  md={8}
-                  lg={8}
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                >
-                  <FormDisplay form={this.state.form} />
-                  {provided.placeholder}
-                </Col>
-              )}
-            </Droppable>
+
+            <Col md={8} lg={8}>
+              <FormDisplay form={this.state.form} />
+            </Col>
           </Row>
         </Container>
       </DragDropContext>
