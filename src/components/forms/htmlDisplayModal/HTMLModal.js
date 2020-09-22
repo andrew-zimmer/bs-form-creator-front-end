@@ -18,7 +18,7 @@ class HTMLModal extends React.Component {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <code>{this.props.html}</code>
+          <code>{this.props.html.replace(`required=""`, "required")}</code>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>

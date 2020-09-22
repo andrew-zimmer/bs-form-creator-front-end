@@ -4,6 +4,7 @@ import uuid from "uuid";
 import FormDisplay from "./Form";
 import HiddenForm from "./HiddenForm";
 import DisplayHTML from "./htmlDisplayModal/DisplayHTML";
+import SaveForm from "./saveFormModal/SaveForm";
 
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
@@ -401,7 +402,6 @@ class CreateFormForm extends React.Component {
                                 onChange={this.handleChangeRadio}
                               />
                             </Col>
-                            required
                           </Form.Group>
                         </fieldset>
 
@@ -534,6 +534,7 @@ class CreateFormForm extends React.Component {
                 </Card>
               </Accordion>
               <DisplayHTML />
+              <SaveForm form={this.state.form} />
             </Col>
 
             <Col md={8} lg={8}>
