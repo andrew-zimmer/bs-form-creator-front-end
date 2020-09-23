@@ -1,5 +1,8 @@
 import React from "react";
 
+import { userLogin } from "../../actions/userAction";
+import { connect } from "react-redux";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -20,6 +23,11 @@ class SignInForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.userLogin(this.state);
+    this.setState({
+      email: '',
+      password: ''
+    })
   };
 
   render() {
@@ -71,4 +79,4 @@ class SignInForm extends React.Component {
   }
 }
 
-export default SignInForm;
+export default connect(null, { userLogin })(SignInForm);

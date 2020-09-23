@@ -6,7 +6,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import { Draggable, Droppable } from "react-beautiful-dnd";
-const Handle = <i className="las la-arrows-alt"></i>;
 
 class FormDisplay extends React.Component {
   renderForm = () => {

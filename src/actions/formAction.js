@@ -1,4 +1,4 @@
 export const addForm = (form) => ({
-  action: "ADD_FORM",
+  type: "ADD_FORM",
   payload: form,
 });

@@ -1,5 +1,9 @@
 import React from "react";
 
+import { connect } from 'react-redux'
+
+import { userSignUp } from '../../actions/userAction'
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
@@ -14,8 +18,9 @@ class SignUpForm extends React.Component {
     passwordConfirmation: "",
   };
 
-  handleSumbit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
+    this.props.userSignUp(this.state)
   };
 
   handleChange = (e) => {
@@ -96,4 +101,4 @@ class SignUpForm extends React.Component {
   }
 }
 
-export default SignUpForm;
+export default connect(null, { userSignUp })(SignUpForm)

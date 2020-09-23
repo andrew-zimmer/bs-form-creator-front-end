@@ -2,9 +2,9 @@ import React from "react";
 
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+// import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
+// import Col from "react-bootstrap/Col";
 
 class HiddenForm extends React.Component {
   renderForm = () => {
@@ -104,13 +104,15 @@ class HiddenForm extends React.Component {
   render() {
     return (
       <div hidden={true} id="hiddenForm">
-        <Form className="border border-solid rounded">
-          {this.renderForm()}
+        <Container className="border border-solid rounded mt-4">
+          <Form>
+            {this.renderForm()}
 
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-        </Form>
+            <Button variant="primary" type="submit" size="lg" block>
+              Submit
+            </Button>
+          </Form>
+        </Container>
       </div>
     );
   }

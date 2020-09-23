@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import SignInForm from "../components/users/SignInForm";
 import SignUpForm from "../components/users/SignUpForm";
@@ -9,8 +9,12 @@ class UserContainer extends React.Component {
     return (
       <Switch>
         <div>
-          <Route exact path="/users/new" component={SignUpForm} />
-          <Route exact path="/users/login" component={SignInForm} />
+          <Route exact path="/users/new">
+            {this.props.login ? <Redirect to='/' /> : <SignUpForm />}
+          </Route>
+          <Route exact path="/users/login" >
+            {this.props.login ? <Redirect to='/' /> : <SignInForm />}
+          </Route>
         </div>
       </Switch>
     );
