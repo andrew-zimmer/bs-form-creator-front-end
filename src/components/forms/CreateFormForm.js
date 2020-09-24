@@ -6,6 +6,8 @@ import HiddenForm from "./HiddenForm";
 import DisplayHTML from "./htmlDisplayModal/DisplayHTML";
 import SaveForm from "./saveFormModal/SaveForm";
 
+import { connect } from 'react-redux'
+
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -311,6 +313,12 @@ class CreateFormForm extends React.Component {
     }
   };
 
+  clearState = () => {
+    this.setState({
+      form: []
+    })
+  }
+
   render() {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -534,7 +542,7 @@ class CreateFormForm extends React.Component {
                 </Card>
               </Accordion>
               <DisplayHTML />
-              <SaveForm form={this.state.form} />
+              {this.props.login && <SaveForm form={this.state.form} clearState={this.clearState} />}
             </Col>
 
             <Col md={8} lg={8}>
@@ -548,4 +556,10 @@ class CreateFormForm extends React.Component {
   }
 }
 
-export default CreateFormForm;
+const mapStateToProps = state => {
+  return {
+    login: state.user.login,
+  }
+}
+
+export default connect(mapStateToProps)(CreateFormForm)

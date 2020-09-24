@@ -1,8 +1,16 @@
 import React from "react";
 
+import FormsDisplay from './displayForms/FormsDisplay'
+
+import Container from 'react-bootstrap/Container'
+
 class Forms extends React.Component {
   render() {
-    return <h2>User Forms Page</h2>;
+    return (
+      <Container>
+        <FormsDisplay />
+      </Container>
+    )
   }
 }
 

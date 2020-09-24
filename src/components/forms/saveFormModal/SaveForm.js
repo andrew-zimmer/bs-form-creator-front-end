@@ -23,6 +23,7 @@ class SaveForm extends React.Component {
           show={this.state.modalShow}
           onHide={() => this.setState({ modalShow: false })}
           form={this.props.form}
+          clearState={this.props.clearState}
         />
       </>
     );

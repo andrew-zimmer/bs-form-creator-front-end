@@ -16,7 +16,18 @@ const SaveForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addForm({ title: formTitle, form: props.form });
+    const userData = {
+      authenticationToken: props.authenticationToken,
+      email: props.email,
+      userId: props.userId,
+      form: { title: formTitle, form: props.form }
+    }
+    setFormTitle('')
+    props.onHide()
+    props.addForm(userData);
+    props.clearState()
+
+
   };
 
   return (
@@ -48,7 +59,7 @@ const SaveForm = (props) => {
             className="mb-4"
             block
           >
-            Sign Up
+            Submit
           </Button>
         </Form>
       </Modal.Body>
@@ -58,9 +69,18 @@ const SaveForm = (props) => {
     </Modal>
   );
 };
+
+const mapStateToProps = state => {
+  return {
+    authenticationToken: state.user.data.authenticationToken,
+    email: state.user.data.email,
+    userId: state.user.data.id
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addForm: (form) => dispatch(addForm(form)),
   };
 };
-export default connect(null, mapDispatchToProps)(SaveForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SaveForm);

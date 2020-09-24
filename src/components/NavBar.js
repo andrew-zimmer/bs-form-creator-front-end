@@ -20,15 +20,12 @@ const NavBar = (props) => {
           <Nav className="mr-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/forms/new">Create From</Nav.Link>
-            <NavDropdown title="Forms" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#form1">Form 1</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+            {props.login && <NavDropdown title="Forms" id="collasible-nav-dropdown">
+
+              {props.forms.slice(0, 3).map(form => <NavDropdown.Item key={form.id} href="#form1">{form.title}</NavDropdown.Item>)}
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/forms">View All</NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown>}
           </Nav>
           <Nav>
             {!props.login ? [<Nav.Link as={Link} to="/users/login">Log In</Nav.Link>,
@@ -47,7 +44,8 @@ const NavBar = (props) => {
 const mapStateToProps = state => {
   return {
     login: state.user.login,
-    userId: state.user.data.id
+    userId: state.user.data.id,
+    forms: state.forms
   }
 }
 
