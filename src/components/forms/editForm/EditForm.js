@@ -5,6 +5,7 @@ import FormDisplay from "../Form";
 import HiddenForm from "../HiddenForm";
 import DisplayHTML from "../htmlDisplayModal/DisplayHTML";
 import EditModalForm from "./editFormModal/EditModalForm";
+import TextareaForm from '../accordionSections/TextareaForm'
 
 import { connect } from 'react-redux'
 
@@ -50,6 +51,12 @@ class EditForm extends Component {
         console.log(this.props.id)
         this.setState({
             form: this.props.forms.find(form => form.id == this.props.id).form
+        })
+    }
+
+    addToForm = (input) => {
+        this.setState({
+            form: [...this.state.form, input]
         })
     }
 
@@ -547,6 +554,7 @@ class EditForm extends Component {
                                             </Form>
                                         </Card.Body>
                                     </Accordion.Collapse>
+                                    <TextareaForm addToForm={this.addToForm} />
                                 </Card>
                             </Accordion>
                             <DisplayHTML />

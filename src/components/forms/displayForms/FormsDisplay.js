@@ -91,25 +91,33 @@ class FormsDisplay extends Component {
                             })}
                         </Form.Group>
                     );
+
+                } else if (x.button.style === "inline") {
+                    return (
+                        <Form.Group key={x.button.id}>
+                            <Form.Label as="legend">{x.button.label}</Form.Label>
+                            {x.button.options.map((option) => {
+                                return (
+                                    <Form.Check
+                                        inline
+                                        type={x.button.type}
+                                        label={option}
+                                        name={x.button.label}
+                                        id={option}
+                                        key={option}
+                                    />
+                                );
+                            })}
+                        </Form.Group>
+                    );
                 }
-            } else if (x.button.style === "inline") {
+            } else if (x.textarea) {
                 return (
-                    <Form.Group key={x.button.id}>
-                        <Form.Label as="legend">{x.button.label}</Form.Label>
-                        {x.button.options.map((option) => {
-                            return (
-                                <Form.Check
-                                    inline
-                                    type={x.button.type}
-                                    label={option}
-                                    name={x.button.label}
-                                    id={option}
-                                    key={option}
-                                />
-                            );
-                        })}
+                    <Form.Group key={x.textarea.id} controlId="exampleForm.ControlTextarea1">
+                        <Form.Label as='legend'>{x.textarea.label}</Form.Label>
+                        <Form.Control as="textarea" id={x.textarea.id} rows={x.textarea.rows} />
                     </Form.Group>
-                );
+                )
             }
         });
     };
@@ -130,7 +138,7 @@ class FormsDisplay extends Component {
 
     render() {
         return (
-            <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
+            <Tab.Container id="list-group-tabs-example" className='mb-4' defaultActiveKey="#link1">
                 <Row>
                     <Col sm={4}>
                         <ListGroup>
@@ -146,11 +154,11 @@ class FormsDisplay extends Component {
                                     type="submit"
                                     name={form.id}
                                     onClick={this.handleClickXButton}
-                                    className='float-right'
+                                    className='float-right mb-4'
                                 >
                                     X
                                 </Button>
-                                <Link to={`/forms/${form.id}/edit`} className='btn btn-primary'>
+                                <Link to={`/forms/${form.id}/edit`} className='btn btn-primary mb-4'>
                                     Edit
                                 </Link>
                                 <DisplayHTML id={`form${form.id}`} />

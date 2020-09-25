@@ -5,6 +5,7 @@ import FormDisplay from "./Form";
 import HiddenForm from "./HiddenForm";
 import DisplayHTML from "./htmlDisplayModal/DisplayHTML";
 import SaveForm from "./saveFormModal/SaveForm";
+import TextareaForm from './accordionSections/TextareaForm'
 
 import { connect } from 'react-redux'
 
@@ -43,7 +44,19 @@ class CreateFormForm extends React.Component {
       label: "",
       id: "",
     },
+    textArea: {
+
+    },
+    range: {
+
+    }
   };
+
+  addToForm = (input) => {
+    this.setState({
+      form: [...this.state.form, input]
+    })
+  }
 
   handleSubmitButton = (e) => {
     e.preventDefault();
@@ -322,7 +335,7 @@ class CreateFormForm extends React.Component {
   render() {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <Container className="mt-4" sticky="top">
+        <Container className="mt-4 mb-4" sticky="top">
           <Row>
             <Col md={4} lg={4}>
               <Accordion defaultActiveKey="">
@@ -539,8 +552,10 @@ class CreateFormForm extends React.Component {
                       </Form>
                     </Card.Body>
                   </Accordion.Collapse>
+                  <TextareaForm addToForm={this.addToForm} />
                 </Card>
               </Accordion>
+
               <DisplayHTML id='hiddenForm' />
               {this.props.login && <SaveForm form={this.state.form} clearState={this.clearState} />}
             </Col>

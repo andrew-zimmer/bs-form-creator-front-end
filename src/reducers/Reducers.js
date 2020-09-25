@@ -6,7 +6,7 @@ const formReducer = (
     case "ADD_FORM":
       return { ...state, forms: [...state.forms, { ...JSON.parse(action.payload.data.form.form), id: action.payload.data.form.id }] };
     case 'DELETE_FORM':
-      return { ...state, forms: state.forms.filter(form => form.id !== action.payload) }
+      return { ...state, forms: state.forms.filter(form => form.id !== Number(action.payload)) }
     case 'EDIT_FORM':
       return { ...state, forms: [...state.forms.filter(form => form.id !== action.payload.data.form.id), JSON.parse(action.payload.data.form.form)] }
     case "USER_LOGIN":

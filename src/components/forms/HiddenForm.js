@@ -80,25 +80,33 @@ class HiddenForm extends React.Component {
               })}
             </Form.Group>
           );
+
+        } else if (x.button.style === "inline") {
+          return (
+            <Form.Group key={x.button.id}>
+              <Form.Label as="legend">{x.button.label}</Form.Label>
+              {x.button.options.map((option) => {
+                return (
+                  <Form.Check
+                    inline
+                    type={x.button.type}
+                    label={option}
+                    name={x.button.label}
+                    id={option}
+                    key={option}
+                  />
+                );
+              })}
+            </Form.Group>
+          );
         }
-      } else if (x.button.style === "inline") {
+      } else if (x.textarea) {
         return (
-          <Form.Group key={x.button.id}>
-            <Form.Label as="legend">{x.button.label}</Form.Label>
-            {x.button.options.map((option) => {
-              return (
-                <Form.Check
-                  inline
-                  type={x.button.type}
-                  label={option}
-                  name={x.button.label}
-                  id={option}
-                  key={option}
-                />
-              );
-            })}
+          <Form.Group key={x.textarea.id} controlId="exampleForm.ControlTextarea1">
+            <Form.Label>{x.textarea.label}</Form.Label>
+            <Form.Control as="textarea" id={x.textarea.id} rows={x.textarea.rows} />
           </Form.Group>
-        );
+        )
       }
     });
   };

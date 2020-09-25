@@ -157,6 +157,23 @@ class FormDisplay extends React.Component {
             </Draggable>
           );
         }
+      } else if (x.textarea) {
+        return (
+          <Draggable key={index} draggableId={index + ""} index={index}>
+            {(provided) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+              >
+                <Form.Group key={x.textarea.id} controlId="exampleForm.ControlTextarea1">
+                  <Form.Label as='legend'>{x.textarea.label}</Form.Label>
+                  <Form.Control as="textarea" id={x.textarea.id} rows={x.textarea.rows} />
+                </Form.Group>
+              </div>
+            )}
+          </Draggable>
+        )
       }
     });
   };

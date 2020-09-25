@@ -9,6 +9,7 @@ import NavBar from "../components/NavBar";
 import Home from "../components/Home";
 import FormsContainer from "./FormsContainer";
 import UserContainer from "./UserContainer";
+import Footer from '../components/Footer'
 
 function App(props) {
   return (
@@ -21,6 +22,7 @@ function App(props) {
           <UserContainer login={props.login} />
         </Route>
       </Switch>
+
     </div>
   );
 }

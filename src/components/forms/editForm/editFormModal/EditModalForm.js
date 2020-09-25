@@ -15,6 +15,7 @@ class EditModalForm extends React.Component {
                 <Button
                     variant="primary"
                     onClick={() => this.setState({ modalShow: true })}
+                    className='mb-4'
                 >
                     Save Form
                 </Button>
