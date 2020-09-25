@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 
 import { connect } from 'react-redux'
 
+import { Link } from 'react-router-dom'
+
 import { deleteForm } from '../../../actions/formAction'
+import HiddenForm from '../HiddenForm'
+import DisplayHTML from "../htmlDisplayModal/DisplayHTML"
+
+
 
 import Tab from 'react-bootstrap/Tab'
 import Row from 'react-bootstrap/Row'
@@ -118,6 +124,10 @@ class FormsDisplay extends Component {
         this.props.deleteForm(userData)
     }
 
+    handleClickEditButton = (e) => {
+
+    }
+
     render() {
         return (
             <Tab.Container id="list-group-tabs-example" defaultActiveKey="#link1">
@@ -140,21 +150,17 @@ class FormsDisplay extends Component {
                                 >
                                     X
                                 </Button>
-                                <Button
-                                    variant="primary"
-                                    type="submit"
-                                    name={form.id}
-                                    onClick={this.handleClickXButton}
-                                    className='float-left'
-                                >
+                                <Link to={`/forms/${form.id}/edit`} className='btn btn-primary'>
                                     Edit
-                                </Button>
-
+                                </Link>
+                                <DisplayHTML id={`form${form.id}`} />
+                                <HiddenForm form={form.form} id={`form${form.id}`} />
                             </Tab.Pane>)
 
                             }
 
                         </Tab.Content>
+
                     </Col>
                 </Row>
             </Tab.Container>

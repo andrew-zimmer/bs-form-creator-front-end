@@ -541,7 +541,7 @@ class CreateFormForm extends React.Component {
                   </Accordion.Collapse>
                 </Card>
               </Accordion>
-              <DisplayHTML />
+              <DisplayHTML id='hiddenForm' />
               {this.props.login && <SaveForm form={this.state.form} clearState={this.clearState} />}
             </Col>
 
@@ -549,7 +549,7 @@ class CreateFormForm extends React.Component {
               <FormDisplay form={this.state.form} />
             </Col>
           </Row>
-          <HiddenForm form={this.state.form} />
+          <HiddenForm form={this.state.form} id='hiddenForm' />
         </Container>
       </DragDropContext>
     );

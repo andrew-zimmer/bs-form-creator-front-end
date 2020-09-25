@@ -49,9 +49,14 @@ export const deleteForm = (userData) => {
   };
 };
 
-export const editForm = (userData) => {
+export const patchForm = (userData) => {
   let formData = {
-    id: userData.formId
+    id: userData.formId,
+    forms: {
+      user_id: userData.userId,
+      form: JSON.stringify(userData.form)
+    }
+
   }
   let configObj = {
     method: "PATCH",
@@ -66,7 +71,8 @@ export const editForm = (userData) => {
   return (dispatch) => {
     dispatch({ type: "USER_LOADING" });
     fetch(`http://localhost:3000/v1/forms/${userData.formId}`, configObj)
-      .then(dispatch({ type: "EDIT_FORM", payload: userData.formId })
+      .then(res => res.json())
+      .then(json => dispatch({ type: "EDIT_FORM", payload: json })
       )
       .catch((error) => console.log(error));
   };

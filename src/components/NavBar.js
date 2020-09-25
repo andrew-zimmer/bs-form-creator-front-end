@@ -22,7 +22,7 @@ const NavBar = (props) => {
             <Nav.Link as={Link} to="/forms/new">Create From</Nav.Link>
             {props.login && <NavDropdown title="Forms" id="collasible-nav-dropdown">
 
-              {props.forms.slice(0, 3).map(form => <NavDropdown.Item key={form.id} href="#form1">{form.title}</NavDropdown.Item>)}
+              {props.forms.slice(0, 3).map(form => <NavDropdown.Item key={form.id} as={Link} to={`/forms/${form.id}/edit`}>{form.title}</NavDropdown.Item>)}
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/forms">View All</NavDropdown.Item>
             </NavDropdown>}

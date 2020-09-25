@@ -13,8 +13,8 @@ const DisplayHTML = (props) => {
         variant="primary"
         onClick={() => {
           setModalShow(true);
-          setHtml(document.getElementById("hiddenForm").innerHTML);
-          console.log(html);
+          setHtml(document.getElementById(props.id).innerHTML);
+          console.log(props.id);
         }}
       >
         Get HTML

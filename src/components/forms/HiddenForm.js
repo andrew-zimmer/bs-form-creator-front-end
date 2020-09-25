@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 // import Col from "react-bootstrap/Col";
 
 class HiddenForm extends React.Component {
+
   renderForm = () => {
     return this.props.form.map((x) => {
       if (x.input) {
@@ -103,7 +104,7 @@ class HiddenForm extends React.Component {
   };
   render() {
     return (
-      <div hidden={true} id="hiddenForm">
+      <div hidden={true} id={this.props.id}>
         <Container className="border border-solid rounded mt-4">
           <Form>
             {this.renderForm()}
