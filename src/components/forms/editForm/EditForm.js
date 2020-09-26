@@ -6,6 +6,8 @@ import HiddenForm from "../HiddenForm";
 import DisplayHTML from "../htmlDisplayModal/DisplayHTML";
 import EditModalForm from "./editFormModal/EditModalForm";
 import TextareaForm from '../accordionSections/TextareaForm'
+import RangeForm from '../accordionSections/RangeForm'
+import SwitchForm from '../accordionSections/SwitchForm'
 
 import { connect } from 'react-redux'
 
@@ -555,9 +557,11 @@ class EditForm extends Component {
                                         </Card.Body>
                                     </Accordion.Collapse>
                                     <TextareaForm addToForm={this.addToForm} />
+                                    <RangeForm addToForm={this.addToForm} />
+                                    <SwitchForm addToForm={this.addToForm} />
                                 </Card>
                             </Accordion>
-                            <DisplayHTML />
+                            <DisplayHTML id={this.props.id} />
                             {this.props.login && <EditModalForm id={this.props.id} form={this.state.form} clearState={this.clearState} />}
                         </Col>
 
@@ -565,7 +569,7 @@ class EditForm extends Component {
                             <FormDisplay form={this.state.form} />
                         </Col>
                     </Row>
-                    <HiddenForm form={this.state.form} />
+                    <HiddenForm form={this.state.form} id={this.props.id} />
                 </Container>
             </DragDropContext>
         );

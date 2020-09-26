@@ -14,7 +14,6 @@ const DisplayHTML = (props) => {
         onClick={() => {
           setModalShow(true);
           setHtml(document.getElementById(props.id).innerHTML);
-          console.log(props.id);
         }}
         className='mb-4'
       >

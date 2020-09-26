@@ -103,10 +103,35 @@ class HiddenForm extends React.Component {
       } else if (x.textarea) {
         return (
           <Form.Group key={x.textarea.id} controlId="exampleForm.ControlTextarea1">
-            <Form.Label>{x.textarea.label}</Form.Label>
+            <Form.Label as='legend'>{x.textarea.label}</Form.Label>
             <Form.Control as="textarea" id={x.textarea.id} rows={x.textarea.rows} />
           </Form.Group>
         )
+      } else if (x.range) {
+        return (
+          <Form.Group key={x.range.id} controlId="formBasicRangeCustom">
+            <Form.Label as='legend'>{x.range.label}</Form.Label>
+            <Form.Control type="range" custom min={x.range.min} max={x.range.max} />
+            <Form.Control.Feedback tooltip={x.range.tooltip}>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+        )
+      } else if (x.switch) {
+        if (x.switch.inline) {
+          return (
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label={x.switch.label}
+              inline
+            />)
+        } else {
+          return (
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label={x.switch.label}
+            />)
+        }
       }
     });
   };

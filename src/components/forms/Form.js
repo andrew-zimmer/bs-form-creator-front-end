@@ -174,6 +174,63 @@ class FormDisplay extends React.Component {
             )}
           </Draggable>
         )
+      } else if (x.range) {
+        return (
+          <Draggable key={index} draggableId={index + ""} index={index}>
+            {(provided) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+              >
+                <Form.Group controlId="formBasicRangeCustom">
+                  <Form.Label as='legend'>{x.range.label}</Form.Label>
+                  <Form.Control type="range" custom min={x.range.min} max={x.range.max} />
+                  <Form.Control.Feedback tooltip={x.range.tooltip}>Looks good!</Form.Control.Feedback>
+                </Form.Group>
+              </div>
+            )}
+          </Draggable>
+        )
+      } else if (x.switch) {
+        if (x.switch.inline) {
+          return (
+            <Draggable key={index} draggableId={index + ""} index={index}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                >
+                  <Form.Check
+                    type="switch"
+                    id={x.switch.id}
+                    label={x.switch.label}
+                    inline
+                  />
+                </div>
+              )}
+            </Draggable>
+          )
+        } else {
+          return (
+            <Draggable key={index} draggableId={index + ""} index={index}>
+              {(provided) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.draggableProps}
+                  {...provided.dragHandleProps}
+                >
+                  <Form.Check
+                    type="switch"
+                    id={x.switch.id}
+                    label={x.switch.label}
+                  />
+                </div>
+              )}
+            </Draggable>
+          )
+        }
       }
     });
   };

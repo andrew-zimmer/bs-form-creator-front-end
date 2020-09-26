@@ -6,6 +6,8 @@ import HiddenForm from "./HiddenForm";
 import DisplayHTML from "./htmlDisplayModal/DisplayHTML";
 import SaveForm from "./saveFormModal/SaveForm";
 import TextareaForm from './accordionSections/TextareaForm'
+import RangeForm from './accordionSections/RangeForm'
+import SwitchForm from './accordionSections/SwitchForm'
 
 import { connect } from 'react-redux'
 
@@ -43,9 +45,6 @@ class CreateFormForm extends React.Component {
       option: "",
       label: "",
       id: "",
-    },
-    textArea: {
-
     },
     range: {
 
@@ -553,6 +552,8 @@ class CreateFormForm extends React.Component {
                     </Card.Body>
                   </Accordion.Collapse>
                   <TextareaForm addToForm={this.addToForm} />
+                  <RangeForm addToForm={this.addToForm} />
+                  <SwitchForm addToForm={this.addToForm} />
                 </Card>
               </Accordion>
 

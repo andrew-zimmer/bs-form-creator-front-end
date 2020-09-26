@@ -15,7 +15,7 @@ class FormsContainer extends React.Component {
         <Route exact path="/forms/new" component={CreateFormForm} />
 
         <Route exact path='/forms/:id/edit' component={({ match }) => {
-          return (this.props.login ? <EditFormForm id={match.params.id} /> : <Redirect to='/' />)
+          return (this.props.login ? <EditFormForm id={Number(match.params.id)} /> : <Redirect to='/' />)
         }} />
 
         <Route exact path="/forms" >
