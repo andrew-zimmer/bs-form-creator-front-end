@@ -23,7 +23,7 @@ class Home extends React.Component {
 
           </ol>
 
-          <a target='_blank' href='http://google.com' className="lab la-youtube" style={{ fontSize: '40px' }}></a>
+          <a target='_blank' href='https://youtu.be/uXwkT_Xap2o' className="lab la-youtube" style={{ fontSize: '40px' }}></a>
 
           <a target='_blank' href='https://github.com/andrew-zimmer/bs-form-creator-front-end' className="lab la-github " style={{ fontSize: '40px' }}></a>
 

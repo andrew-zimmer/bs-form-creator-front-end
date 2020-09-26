@@ -8,7 +8,8 @@ const formReducer = (
     case 'DELETE_FORM':
       return { ...state, forms: state.forms.filter(form => form.id !== Number(action.payload)) }
     case 'EDIT_FORM':
-      return { ...state, forms: [...state.forms.filter(form => form.id !== action.payload.data.form.id), JSON.parse(action.payload.data.form.form)] }
+      const newform = state.forms.filter(form => form.id !== Number(action.payload.data.form.id))
+      return { ...state, forms: [...newform, { ...JSON.parse(action.payload.data.form.form), id: action.payload.data.form.id }] }
     case "USER_LOGIN":
       return { ...state, forms: action.payload.data.user.forms.map(form => ({ ...JSON.parse(form.form), id: form.id })), user: { login: true, data: { email: action.payload.data.user.email, id: action.payload.data.user.id, username: action.payload.data.user.username, authenticationToken: action.payload.data.user.authentication_token } } };
     case 'USER_LOGOUT':

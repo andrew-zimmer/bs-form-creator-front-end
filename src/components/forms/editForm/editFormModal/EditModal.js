@@ -26,7 +26,7 @@ const EditModal = (props) => {
         setFormTitle('')
         props.onHide()
         props.patchForm(userData);
-        props.clearState()
+        // props.clearState()
 
 
     };

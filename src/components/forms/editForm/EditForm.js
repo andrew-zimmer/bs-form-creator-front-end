@@ -49,8 +49,6 @@ class EditForm extends Component {
     };
 
     componentDidMount() {
-        console.log(this.props.forms.find(form => form.id == this.props.id))
-        console.log(this.props.id)
         this.setState({
             form: this.props.forms.find(form => form.id == this.props.id).form
         })
