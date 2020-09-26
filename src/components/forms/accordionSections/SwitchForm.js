@@ -64,7 +64,7 @@ export default class SwitchForm extends Component {
 
 
                                 <Button variant="primary" type="submit">
-                                    Submit
+                                    Add To Form
   </Button>
                             </Form>
                         </Form>

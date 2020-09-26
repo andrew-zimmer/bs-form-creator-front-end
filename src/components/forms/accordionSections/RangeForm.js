@@ -114,7 +114,7 @@ export default class RangeForm extends Component {
                             </fieldset> */}
 
                             <Button variant="primary" type="submit">
-                                Submit
+                                Add To Form
   </Button>
                         </Form>
                     </Card.Body>

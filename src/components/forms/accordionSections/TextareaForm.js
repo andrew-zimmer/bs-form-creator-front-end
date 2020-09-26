@@ -64,7 +64,7 @@ export default class TextareaForm extends Component {
                             </Form.Group>
 
                             <Button variant="primary" type="submit">
-                                Submit
+                                Add To Form
                             </Button>
                         </Form>
                     </Card.Body>

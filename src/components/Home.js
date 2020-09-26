@@ -1,7 +1,5 @@
 import React from "react";
 
-import Link from 'react-dom'
-
 import Container from 'react-bootstrap/Container'
 
 class Home extends React.Component {
@@ -24,11 +22,10 @@ class Home extends React.Component {
             <p>A modal will pop up to give you your HTML.</p>
 
           </ol>
-          <a target='_blank' href='http://google.com'>
-            View the tutorial video here.
-          </a>
-          <br />
-          <a target='_blank' href='http://google.com' className="lab la-github " style={{ fontSize: '64px' }}></a>
+
+          <a target='_blank' href='http://google.com' className="lab la-youtube" style={{ fontSize: '40px' }}></a>
+
+          <a target='_blank' href='https://github.com/andrew-zimmer/bs-form-creator-front-end' className="lab la-github " style={{ fontSize: '40px' }}></a>
 
         </div>
       </Container>

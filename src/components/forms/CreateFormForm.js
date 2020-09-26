@@ -340,7 +340,7 @@ class CreateFormForm extends React.Component {
               <Accordion defaultActiveKey="">
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="0">
-                    Input Fields
+                    Input
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="0">
                     <Card.Body>
@@ -354,9 +354,7 @@ class CreateFormForm extends React.Component {
                             value={this.state.inputField.label}
                             required
                           />
-                          <Form.Text className="text-muted">
-                            You'll be able to edit in field.
-                          </Form.Text>
+
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
@@ -391,7 +389,7 @@ class CreateFormForm extends React.Component {
                           <Form.Check type="checkbox" label="Required?" />
                         </Form.Group>
                         <Button variant="primary" type="submit">
-                          Create Input
+                          Add To Form
                         </Button>
                       </Form>
                     </Card.Body>
@@ -399,7 +397,7 @@ class CreateFormForm extends React.Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="1">
-                    Select Fields
+                    Multiple Select
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="1">
                     <Card.Body>
@@ -455,7 +453,7 @@ class CreateFormForm extends React.Component {
                         </Button>
 
                         <Button variant="primary" type="submit">
-                          Create Input
+                          Add To Form
                         </Button>
                         {this.renderOptions()}
                       </Form>
@@ -464,7 +462,7 @@ class CreateFormForm extends React.Component {
                 </Card>
                 <Card>
                   <Accordion.Toggle as={Card.Header} eventKey="2">
-                    Buttons
+                    Radio / Checkbox
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey="2">
                     <Card.Body>
@@ -545,7 +543,7 @@ class CreateFormForm extends React.Component {
                         </Button>
 
                         <Button variant="primary" type="submit">
-                          Submit
+                          Add To Form
                         </Button>
                         {this.renderButtonOptions()}
                       </Form>
